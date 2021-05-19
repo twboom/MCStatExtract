@@ -1,0 +1,11 @@
+# OBJ
+## STATS
+### BROKEN
+### KILLED
+### CRAFTED
+### USED
+### CUSTOM
+### KILLED BY
+### DROPPED
+### MINED
+### PICKED UP

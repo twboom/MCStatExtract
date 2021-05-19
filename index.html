@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCStatExtract</title>
+    <script src="js/app.js"></script>
+</head>
+<body>
+    <main>
+        <section>
+            <input type="file" name="upload" id="upload" multiple>
+            <input type="text" name="query" id="query">
+            <select name="cat" id="cat">
+                <option value="minecraft:broken">Broken</option>
+                <option value="minecraft:killed">Killed</option>
+                <option value="minecraft:crafted">Crafted</option>
+                <option value="minecraft:used">Used</option>
+                <option value="minecraft:custom">Custom</option>
+                <option value="minecraft:killed_by">Killed by</option>
+                <option value="minecraft:dropped">Dropped</option>
+                <option value="minecraft:mined">Mined</option>
+                <option value="minecraft:picked_up">Picked up</option>
+            </select>
+            <button id="search">Search</button>
+        </section>
+        <section>
+            <table>
+                <thead>
+                    <th>Count</th>
+                    <th>UUID</th>
+                </thead>
+                <tbody id="results"></tbody>
+            </table>
+        </section>
+        <section>
+            <ul id="players"></ul>
+        </section>
+    </main>
+</body>
+</html>
