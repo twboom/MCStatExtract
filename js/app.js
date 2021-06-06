@@ -5,7 +5,13 @@ function update() {
     playerlist.innerHTML = '';
     for (player in players) {
         const el = document.createElement('li');
-        el.innerText = players[player].uuid;
+        const name = document.createElement('b');
+        name.innerText = players[player].name;
+        const uuid = document.createElement('i');
+        uuid.innerText = players[player].uuid
+        el.appendChild(name);
+        el.innerHTML += ' - ';
+        el.appendChild(uuid);
         playerlist.appendChild(el);
     };
 };
@@ -25,10 +31,10 @@ function search() {
         const tr = document.createElement('tr');
         const count = document.createElement('td');
         count.innerText = result;
-        const uuid = document.createElement('td');
-        uuid.innerText = player.uuid;
+        const name = document.createElement('td');
+        name.innerText = player.name;
         tr.appendChild(count);
-        tr.appendChild(uuid);
+        tr.appendChild(name);
         document.getElementById('results').appendChild(tr);
     };
 };
@@ -38,6 +44,16 @@ class Player {
         this.stats = stats.stats;
         this.uuid = uuid;
         this.dataVersion = stats.DataVersion;
+
+        fetch(`https://playerdb.co/api/player/minecraft/${this.uuid}`).then(
+            r => r.json()
+            ).then(
+                json => {
+                    this.info = json;
+                    this.name = json.data.player.username;
+                    update()
+                }
+            );
     };
 };
 
