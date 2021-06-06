@@ -73,4 +73,4 @@ table tr:nth-child(even) {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #777777;
-  
+}
