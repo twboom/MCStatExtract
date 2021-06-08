@@ -1,0 +1,19 @@
+div#button-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button.tool-button {
+    font-family: 'Open Sans';
+    border: hidden;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: var(--background);
+    color: white;
+    transition: 0.1s;
+    transition-property: transform;
+}
+
+button.tool-button:hover {
+    transform: scale(1.1);
+}

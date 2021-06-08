@@ -78,6 +78,9 @@ function init() {
         };
     });
     document.getElementById('search').addEventListener('click', search);
+    document.getElementById('header-text').addEventListener('click', _ => {
+        location.href = '/'
+    })
 };
 
 window.onload = init;

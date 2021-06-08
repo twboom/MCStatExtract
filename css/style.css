@@ -18,6 +18,16 @@ header {
     text-align: center;
 }
 
+span#header-text {
+    transition: 0.1s;
+    transition-property: letter-spacing;
+    cursor: pointer;
+}
+
+span#header-text:hover {
+    letter-spacing: 2px;
+}
+
 p.header > a {
     color: white;
 }
