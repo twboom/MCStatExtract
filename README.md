@@ -9,7 +9,7 @@ I host this on a website, so you can just access it all of the time! You can fin
 
 1. Get your statistics files and upload it with the button at the top.
 2. Choose the category of the statistics you want to compare.
-3. Type in the name of the statistic. This *has* to be without the `minecraft:` prefix, but *with* the underscores. The name might differ from what you see in Minecraft itself
+3. Type in the name of the statistic. The name might differ from what you see in Minecraft itself.
 4. Click the big search button!
 
 ### Getting the statistics

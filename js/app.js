@@ -22,6 +22,7 @@ function search() {
     const cat = document.getElementById('cat').value;
     if (query === '' || players.length === 0) { return }
     query = query.replaceAll(' ', '_')
+    query = query.replaceAll('minecraft:', '')
     query = 'minecraft:' + query;
     for (let i = 0; i < players.length; i++) {
         const player = players[i];
