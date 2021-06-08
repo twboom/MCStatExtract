@@ -1,4 +1,4 @@
-# MCStatExtract
+# MCTools
 Get other player's stats formatted nicely!
 
 This is a (vanilla) JavaScript webapp that runs 100% client-side.
