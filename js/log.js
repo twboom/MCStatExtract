@@ -24,18 +24,22 @@ function printToPage(line) {
     index.innerText = line.index;
     p.appendChild(index);
 
+    p.innerHTML += ' ';
+
     // Time
     const time = document.createElement('span');
     time.classList = 'line time';
-    time.innerText = line.time;
+    time.innerText = `[${line.time}]`;
     p.appendChild(time)
 
     // Initiator
     const initiator = document.createElement('span');
     initiator.classList = 'line init';
     initiator.dataset.type = line.type;
-    initiator.innerText = `${line.initiator}/${line.type}`;
+    initiator.innerText = `[${line.initiator}/${line.type}]`;
     p.appendChild(initiator);
+
+    p.innerHTML += ': ';
 
     // Content
     const content = document.createElement('span');
