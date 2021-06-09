@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap');
+
+p.line {
+    font-family: 'Roboto Mono';
+    margin: 0;
+}
+
+span.line.index {
+    font-size: small;
+    color: #515151;
+}
+
+span.line.init[data-type=INFO] {
+    color: green;
+}
+
+span.line.init[data-type=WARN] {
+    color: red;
+}
