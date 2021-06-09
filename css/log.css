@@ -3,6 +3,7 @@
 p.line {
     font-family: 'Roboto Mono';
     margin: 0;
+    word-wrap: break-word;
 }
 
 span.line.index {
