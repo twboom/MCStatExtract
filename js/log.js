@@ -1,4 +1,5 @@
 const lines = [];
+const session = {};
 
 function process(file) {
     if (file === undefined) { return };
@@ -7,13 +8,20 @@ function process(file) {
             let line = data.split(/\r?\n/)[index];
             if (line === '') { continue };
             line = new Line(line, parseInt(index) + 1)
-            lines.push(line)
-            printToPage(line)
+            lines.push(line);
+            session.inits.add(line.initiator)
+            session.types.add(line.type)
+            printLine(line);
         };
+
     });
 };
 
-function printToPage(line) {
+function search() {
+
+}
+
+function printLine(line) {
     // Container
     const p = document.createElement('p');
     p.classList = 'line';
@@ -49,7 +57,7 @@ function printToPage(line) {
 
     // Add to output element
     document.getElementById('output').appendChild(p)
-}
+};
 
 
 class Line {
@@ -85,6 +93,10 @@ function init() {
         process(files[0])
     });
 
+    // Creating sets
+    session.inits = new Set();
+    session.types = new Set();
+    
 }
 
 window.onload = init
