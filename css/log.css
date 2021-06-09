@@ -16,5 +16,9 @@ span.line.init[data-type=INFO] {
 }
 
 span.line.init[data-type=WARN] {
-    color: red;
+    color: orange;
+}
+
+span.line.init[data-type=FATAL] {
+    color: red
 }
