@@ -6,11 +6,45 @@ function process(file) {
         for (index in data.split(/\r?\n/)) {
             let line = data.split(/\r?\n/)[index];
             if (line === '') { continue };
-            line = new Line(line)
-            console.log(line)
+            line = new Line(line, parseInt(index) + 1)
             lines.push(line)
-        }
-    })
+            printToPage(line)
+        };
+    });
+};
+
+function printToPage(line) {
+    // Container
+    const p = document.createElement('p');
+    p.classList = 'line';
+
+    // Index
+    const index = document.createElement('span');
+    index.classList = 'line index'
+    index.innerText = line.index;
+    p.appendChild(index);
+
+    // Time
+    const time = document.createElement('span');
+    time.classList = 'line time';
+    time.innerText = line.time;
+    p.appendChild(time)
+
+    // Initiator
+    const initiator = document.createElement('span');
+    initiator.classList = 'line init';
+    initiator.dataset.type = line.type;
+    initiator.innerText = `${line.initiator}/${line.type}`;
+    p.appendChild(initiator);
+
+    // Content
+    const content = document.createElement('span');
+    content.classList = 'line content';
+    content.innerText = line.content;
+    p.appendChild(content);
+
+    // Add to output element
+    document.getElementById('output').appendChild(p)
 }
 
 
