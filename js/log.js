@@ -30,24 +30,33 @@ function printLine(line) {
     const index = document.createElement('span');
     index.classList = 'line index'
     index.innerText = line.index;
+
+    // Red index on custom (weird) line
+    if (line.custom) {
+        index.dataset.custom = true;
+    };
+    
     p.appendChild(index);
 
     p.innerHTML += ' ';
 
-    // Time
-    const time = document.createElement('span');
-    time.classList = 'line time';
-    time.innerText = `[${line.time}]`;
-    p.appendChild(time)
+    // In case of something like an exception
+    if (!line.custom) {
+        // Time
+        const time = document.createElement('span');
+        time.classList = 'line time';
+        time.innerText = `[${line.time}]`;
+        p.appendChild(time)
 
-    // Initiator
-    const initiator = document.createElement('span');
-    initiator.classList = 'line init';
-    initiator.dataset.type = line.type;
-    initiator.innerText = `[${line.initiator}/${line.type}]`;
-    p.appendChild(initiator);
+        // Initiator
+        const initiator = document.createElement('span');
+        initiator.classList = 'line init';
+        initiator.dataset.type = line.type;
+        initiator.innerText = `[${line.initiator}/${line.type}]`;
+        p.appendChild(initiator);
 
-    p.innerHTML += ': ';
+        p.innerHTML += ': ';
+    };
 
     // Content
     const content = document.createElement('span');
@@ -66,13 +75,20 @@ class Line {
 
         this.index = index;
         this.line = line;
-        this.time = line.split(' ')[0].replace('[', '').replace(']', '');
-        this.initiator = line.split('[')[2].split(']')[0].split('/')[0];
-        this.type = line.split('[')[2].split(']')[0].split('/')[1];
-        this.content = line.split(']')[2].substring(2);
-        for (let i = 3; i < line.split(']').length; i++) {
-            this.content += ']';
-            this.content += line.split(']')[i];
+        
+        if (line.charAt(0) == '[') {
+            this.time = line.split(' ')[0].replace('[', '').replace(']', '');
+            this.initiator = line.split('[')[2].split(']')[0].split('/')[0];
+            this.type = line.split('[')[2].split(']')[0].split('/')[1];
+            this.content = line.split(']')[2].substring(2);
+            for (let i = 3; i < line.split(']').length; i++) {
+                this.content += ']';
+                this.content += line.split(']')[i];
+            };
+            this.custom = false;
+        } else {
+            this.content = line;
+            this.custom = true;
         };
 
     };

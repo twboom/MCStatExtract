@@ -22,3 +22,7 @@ span.line.init[data-type=WARN] {
 span.line.init[data-type=FATAL] {
     color: red
 }
+
+span.line.index[data-custom=true] {
+    color: red;
+}
