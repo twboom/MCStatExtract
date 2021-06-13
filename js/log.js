@@ -1,25 +1,76 @@
 const lines = [];
 const session = {};
+const search = {};
+
 
 function process(file) {
     if (file === undefined) { return };
     file.text().then(data => {
         for (index in data.split(/\r?\n/)) {
+
+            // Split data
             let line = data.split(/\r?\n/)[index];
             if (line === '') { continue };
+
+            // Create lines
             line = new Line(line, parseInt(index) + 1)
             lines.push(line);
+
+            // Add line initiator and types to sets
             session.inits.add(line.initiator)
             session.types.add(line.type)
-            printLine(line);
         };
+
+
+        // Initialise search
+        // Initiators
+        const initiators = [...session.inits];
+        for (let i = 0; i < initiators.length; i++) {
+            if (initiators[i] === undefined) { continue };
+            const option = document.createElement('option');
+            option.value = initiators[i];
+            option.innerText = initiators[i].charAt(0).toUpperCase() + initiators[i].slice(1);
+            document.getElementById('inits').appendChild(option)
+        };
+
+        // Types
+        const types = [...session.types]
+        for (let i = 0; i < types.length; i++) {
+            if (types[i] === undefined) { continue };
+            const option = document.createElement('option');
+            option.value = types[i];
+            option.innerText = types[i]
+            document.getElementById('types').appendChild(option)
+        };
+
+        output();
 
     });
 };
 
-function search() {
 
-}
+function output() {
+
+    document.getElementById('output').innerHTML = '';
+
+    for (let i = 0; i < lines.length; i++) {
+
+        const line = lines[i]
+
+        if (search.type !== 'all' && line.type !== search.type) {
+            continue;
+        };
+
+        if (search.initiator !== 'all' && line.initiator !== search.initiator) {
+            continue;
+        };
+
+        printLine(line);
+
+    };
+
+};
+
 
 function printLine(line) {
     // Container
@@ -109,10 +160,25 @@ function init() {
         process(files[0])
     });
 
+    // Initialize search
+    search.initiator = document.getElementById('inits').value;
+    search.type = document.getElementById('types').value;
+
+    document.getElementById('inits').addEventListener('input', _ => {
+        search.initiator = document.getElementById('inits').value;
+        output();
+    })
+
+    document.getElementById('types').addEventListener('input', _ => {
+        search.type = document.getElementById('types').value;
+        output();
+    })
+
     // Creating sets
     session.inits = new Set();
     session.types = new Set();
     
 }
+
 
 window.onload = init
