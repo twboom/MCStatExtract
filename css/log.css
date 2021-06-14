@@ -4,10 +4,11 @@ p.line {
     font-family: 'Roboto Mono';
     margin: 0;
     word-wrap: break-word;
+    font-size: 12px;
 }
 
 span.line.index {
-    font-size: small;
+    font-size: 10px;
     color: #515151;
 }
 
