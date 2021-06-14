@@ -27,16 +27,22 @@
             <input type="file" name="upload" id="upload">
         </section>
         <section>
-            <h1>Search</h1>
+            <h1>Filter</h1>
+            <label for="inits">Initiator:</label>
             <select name="inits" id="inits">
-                <option value="all">All</option>
+                <option value="all">All:</option>
             </select>
+            <br>
+            <label for="types">Type:</label>
             <select name="types" id="types">
                 <option value="all">All</option>
             </select>
         </section>
         <section>
-            <div id="output"></div>
+            <h1>Log</h1>
+            <div id="output">
+                <p><i>No file loaded</i></p>
+            </div>
         </section>
     </main>
 </body>
