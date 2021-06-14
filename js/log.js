@@ -58,11 +58,25 @@ function output() {
         const line = lines[i]
 
         if (search.type !== 'all' && line.type !== search.type) {
+            console.log(5)
             continue;
         };
 
         if (search.initiator !== 'all' && line.initiator !== search.initiator) {
             continue;
+        };
+
+        if (search.contains !== '' && !line.content.toLowerCase().includes(search.contains)) {
+            continue;
+        };
+
+        if (search.user !== undefined) {
+            
+            if (!(line.content.toLowerCase().includes(search.user.name.toLowerCase()) ||
+                line.content.toLowerCase().includes(search.user.id) ||
+                line.content.toLowerCase().includes(search.user.raw))
+            ) { continue }
+
         };
 
         printLine(line);
@@ -163,6 +177,7 @@ function init() {
     // Initialize search
     search.initiator = document.getElementById('inits').value;
     search.type = document.getElementById('types').value;
+    search.contains = document.getElementById('contains').value;
 
     document.getElementById('inits').addEventListener('input', _ => {
         search.initiator = document.getElementById('inits').value;
@@ -173,6 +188,32 @@ function init() {
         search.type = document.getElementById('types').value;
         output();
     })
+
+    document.getElementById('contains').addEventListener('input', _ => {
+        search.contains = document.getElementById('contains').value.toLowerCase();
+        output();
+    })
+
+    document.getElementById('search').addEventListener('click', _ => {
+        search.user = {}
+        search.user.name = document.getElementById('user').value;
+        if (search.user.name === '') {
+            search.user = undefined;
+            output();
+            return;
+        }
+        fetch(`https://playerdb.co/api/player/minecraft/${search.user.name}`)
+            .then(
+                r => r.json()
+            ).then(
+                json => {
+                    search.user.uuid = json.data.player.id;
+                    search.user.raw = json.data.player.raw_id;
+                }
+            );
+        output();
+    })
+
 
     // Creating sets
     session.inits = new Set();
