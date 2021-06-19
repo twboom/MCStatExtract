@@ -174,6 +174,7 @@ function init() {
         process(files[0])
     });
 
+
     // Initialize search
     search.initiator = document.getElementById('inits').value;
     search.type = document.getElementById('types').value;
@@ -211,6 +212,40 @@ function init() {
                     search.user.raw = json.data.player.raw_id;
                 }
             );
+        output();
+    })
+
+
+    // Display options
+
+    session.display = { // Default values
+        'index': true,
+        'time': true,
+        'init': true,
+        'content': true,
+    }
+
+    document.getElementById('show-index').addEventListener('input', _ => {
+        const status = document.getElementById('show-index').checked;
+        session.display.index = status;
+        output();
+    })
+
+    document.getElementById('show-time').addEventListener('input', _ => {
+        const status = document.getElementById('show-time').checked;
+        session.display.time = status;
+        output();
+    })
+
+    document.getElementById('show-init').addEventListener('input', _ => {
+        const status = document.getElementById('show-init').checked;
+        session.display.init = status;
+        output();
+    })
+
+    document.getElementById('show-content').addEventListener('input', _ => {
+        const status = document.getElementById('show-content').checked;
+        session.display.content = status;
         output();
     })
 
