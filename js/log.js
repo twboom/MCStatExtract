@@ -87,50 +87,63 @@ function output() {
 
 
 function printLine(line) {
+    // Display options
+    const display = session.display
+
     // Container
     const p = document.createElement('p');
     p.classList = 'line';
 
     // Index
-    const index = document.createElement('span');
-    index.classList = 'line index'
-    index.innerText = line.index;
+    if (display.index) {
+        const index = document.createElement('span');
+        index.classList = 'line index'
+        index.innerText = line.index;
 
-    // Red index on custom (weird) line
-    if (line.custom) {
-        index.dataset.custom = true;
+        // Red index on custom (weird) line
+        if (line.custom) {
+            index.dataset.custom = true;
+        };
+        
+        p.appendChild(index);
+
+        p.innerHTML += ' ';
     };
-    
-    p.appendChild(index);
-
-    p.innerHTML += ' ';
 
     // In case of something like an exception
     if (!line.custom) {
         // Time
-        const time = document.createElement('span');
-        time.classList = 'line time';
-        time.innerText = `[${line.time}]`;
-        p.appendChild(time)
+        if (display.time) {
+            const time = document.createElement('span');
+            time.classList = 'line time';
+            time.innerText = `[${line.time}]`;
+            p.appendChild(time);
+        };
 
         // Initiator
-        const initiator = document.createElement('span');
-        initiator.classList = 'line init';
-        initiator.dataset.type = line.type;
-        initiator.innerText = `[${line.initiator}/${line.type}]`;
-        p.appendChild(initiator);
+        if (display.init) {
+            const initiator = document.createElement('span');
+            initiator.classList = 'line init';
+            initiator.dataset.type = line.type;
+            initiator.innerText = `[${line.initiator}/${line.type}]`;
+            p.appendChild(initiator);
+        };
 
-        p.innerHTML += ': ';
+        if (display.content && (display.time || display.init)) {
+            p.innerHTML += ': ';
+        };
     };
 
     // Content
-    const content = document.createElement('span');
-    content.classList = 'line content';
-    content.innerText = line.content;
-    p.appendChild(content);
+    if (display.content) {
+        const content = document.createElement('span');
+        content.classList = 'line content';
+        content.innerText = line.content;
+        p.appendChild(content);
+    };
 
     // Add to output element
-    document.getElementById('output').appendChild(p)
+    document.getElementById('output').appendChild(p);
 };
 
 
