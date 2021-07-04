@@ -1,4 +1,5 @@
 const players = [];
+const searchables = {};
 
 function update() {
     const playerlist = document.getElementById('players');
@@ -41,6 +42,22 @@ function search() {
     };
 };
 
+
+function autoComplete(evt) {
+    let query = evt.target.value
+    const cat = document.getElementById('cat').value;
+
+    if (query === '') { return };
+
+    query = query.replaceAll(' ', '_')
+    query = query.replaceAll('minecraft:', '')
+    query = 'minecraft:' + query;
+
+    const matches = searchables[cat]
+    
+}
+
+
 class Player {
     constructor(stats, uuid) {
         this.stats = stats.stats;
@@ -66,6 +83,20 @@ function process(file) {
         const pl = new Player(json, uuid);
         if (players.includes(pl)) { return };
         players.push(pl);
+
+        // Add to searchables
+        for (const [key, value] of Object.entries(pl.stats)) {
+            if (searchables[key] === undefined) {
+                searchables[key] = new Set();
+            };
+
+            const obj = value
+
+            for (const [prop, count] of Object.entries(obj)) {
+                searchables[key].add(prop)
+            }
+        }
+
         update();
     });
 };
@@ -78,6 +109,7 @@ function init() {
         };
     });
     document.getElementById('search').addEventListener('click', search);
+    document.getElementById('query').addEventListener('input', autoComplete)
     document.getElementById('header-text').addEventListener('click', _ => {
         location.href = '/'
     })
