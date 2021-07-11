@@ -28,13 +28,12 @@ function process(status) {
 
 
 function init() {
-    getStatus()
-
-    document.querySelectorAll('.tool-button').forEach(el => {
-        el.addEventListener('click', _ => {
-            location.href = el.dataset.link
-        })
+    // Home button
+    document.getElementById('header-text').addEventListener('click', _ => {
+        location.href = '/'
     })
+
+    getStatus()
 }
 
 window.onload = init
