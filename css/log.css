@@ -20,7 +20,8 @@ span.line.init[data-type=WARN] {
     color: orange;
 }
 
-span.line.init[data-type=FATAL] {
+span.line.init[data-type=FATAL],
+span.line.init[data-type=ERROR] {
     color: red
 }
 
