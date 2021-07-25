@@ -84,3 +84,12 @@ table tr:nth-child(even) {
 ::-webkit-scrollbar-thumb:hover {
     background: #777777;
 }
+
+/* Responsive */
+@media screen and (max-width: 1080px) {
+    
+    section {
+        width: 90%;
+    }
+
+}
