@@ -12,6 +12,9 @@ export function updatePlayerList() {
         el.appendChild(name);
         el.innerHTML += ' - ';
         el.appendChild(uuid);
+        el.addEventListener('click', _ => {
+            console.log(player.stats)
+        })
         playerlist.appendChild(el);
     });
 };
