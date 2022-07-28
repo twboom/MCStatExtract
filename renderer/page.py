@@ -20,13 +20,13 @@ def build_page(page) -> None:
 
     # Read the source file
     with open(f'pages/{source}/{source}.html', 'r') as f:
-        source = f.read()
+        html = f.read()
 
     # Read the template file
     if template is not None:
-        output = fill_template(template, source)
+        output = fill_template(template, html)
     else:
-        output = source
+        output = html
 
     output = output.replace('{{title}}', title)
     output = output.replace('{{title_header}}', title_header)
@@ -46,6 +46,7 @@ def fill_template(template, source) -> str:
 
 # Export the page
 def export_page(page, target, source) -> None:
+    copy_scripts(page, source)
     page = append_time(page)
     page = include_css(page, source)
     with open(f'build/{target}', 'w') as f:
@@ -78,7 +79,25 @@ def include_css(html, source) -> str:
     html = append_child(html, 'head', css_html)
 
     # Remove the old css links
+    print(css_files_attrs)
     for file in css_files_attrs:
+        if 'template="None"' in file:
+            file = file.replace('template="None"', 'template')
         html = html.replace(file, '')
 
     return html
+
+
+# Copy over JS files
+def copy_scripts(html, source):
+    scripts = []
+    files = get_elements_by_tag_name(html, "script")
+    for file in files:
+        if file["src"]:
+            scripts.append(file["src"])
+    
+    for file in scripts:
+        with open(f"pages/{source}/{file}", "r") as f:
+            js = f.read()
+            with open(f"build/{file}", "w") as t:
+                t.write(js)

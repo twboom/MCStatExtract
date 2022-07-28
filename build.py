@@ -1,5 +1,6 @@
 import os
 from distutils.dir_util import copy_tree
+from shutil import rmtree
 
 from renderer.page import build_page
 from renderer.utility import page_list
@@ -12,10 +13,12 @@ if __name__ == "__main__":
     # Checks
     print('\nDoing checks')
 
-    if not os.path.exists('build'):
-        os.mkdir('build')
-        print('Created build directory')
-
+    if os.path.exists('build'):
+        rmtree("build")
+    os.mkdir('build')
+    os.mkdir("build/js")
+    print('Created build directory')
+    
     print('Finished checks')
 
     print('\nStarting build process...')
