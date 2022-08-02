@@ -62,7 +62,7 @@ def include_css(html, source) -> str:
         if file['rel'] == 'stylesheet':
             css_files_attrs.append(reconstruct_element('link', file))
             css = file["href"]
-            if file["template"] or file["template"] is None:
+            if "template" in file:
                 css = "src/" + css
             css_files.append(css)
 
