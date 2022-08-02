@@ -47,6 +47,42 @@ div.panel {
     border-radius: 8px;
 }
 
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ffffff00;
+    height: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ababab;
+    border: hidden;
+    border-radius: 10px;
+    max-height: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #777777;
+}
+
+/* Responsive */
+@media screen and (max-width: 1080px) {
+    
+    div.panel {
+        width: 90%;
+    }
+
+}
+
 a#github {
     font-size: 0;
     border-radius: 50%;
