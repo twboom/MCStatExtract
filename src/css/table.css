@@ -3,9 +3,9 @@ table {
 }
 
 table tr:nth-child(odd) {
-    background-color: white;
+    /* background-color: white; */
 }
 
 table tr:nth-child(even) {
-    background-color: #3e49ee56;
+    background-color: var(--lighter);
 }

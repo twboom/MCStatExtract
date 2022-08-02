@@ -6,7 +6,8 @@
     --darker: #04293A;
     --dark: #064663;
     --light: #ECB365;
-    --lightest: #F7F6E7;
+    --lighter: #F7F6E7;
+    --lightest: #ffffff;
 }
 
 html {
