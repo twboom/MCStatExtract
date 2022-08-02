@@ -79,7 +79,6 @@ def include_css(html, source) -> str:
     html = append_child(html, 'head', css_html)
 
     # Remove the old css links
-    print(css_files_attrs)
     for file in css_files_attrs:
         if 'template="None"' in file:
             file = file.replace('template="None"', 'template')
