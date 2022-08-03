@@ -1,0 +1,46 @@
+<script src="js/log.js"></script>
+<link rel="stylesheet" href="css/log.css">
+
+<div class="panel">
+    <h1>Files</h1>
+    <input type="file" name="upload" id="upload">
+</div>
+<div class="panel">
+    <h1>Display</h1>
+    <input type="checkbox" name="index" id="show-index" checked>
+    <label for="index">Index</label>
+    <br>
+    <input type="checkbox" name="time" id="show-time" checked>
+    <label for="time">Time</label>
+    <br>
+    <input type="checkbox" name="init" id="show-init" checked>
+    <label for="init">Initiator</label>
+    <br>
+    <input type="checkbox" name="content" id="show-content" checked>
+    <label for="content">Content</label>
+</div>
+<div class="panel">
+    <h1>Filter</h1>
+    <label for="inits">Initiator:</label>
+    <select name="inits" id="inits">
+        <option value="all">All</option>
+    </select>
+    <br>
+    <label for="types">Type:</label>
+    <select name="types" id="types">
+        <option value="all">All</option>
+    </select>
+    <br>
+    <label for="contains">Contains:</label>
+    <input type="search" name="contains" id="contains">
+    <br>
+    <label for="user">User:</label>
+    <input type="search" name="user" id="user">
+    <input type="submit" id="search" value="Search for user">
+</div class="panel">
+<div class="panel">
+    <h1>Log</h1>
+    <div id="output">
+        <p><i>No file loaded</i></p>
+    </div>
+</div class="panel">

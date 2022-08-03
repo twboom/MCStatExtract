@@ -1,0 +1,28 @@
+p.line {
+    font-family: 'Roboto Mono';
+    margin: 0;
+    word-wrap: break-word;
+    font-size: 12px;
+}
+
+span.line.index {
+    font-size: 10px;
+    color: #515151;
+}
+
+span.line.init[data-type=INFO] {
+    color: green;
+}
+
+span.line.init[data-type=WARN] {
+    color: orange;
+}
+
+span.line.init[data-type=FATAL],
+span.line.init[data-type=ERROR] {
+    color: red
+}
+
+span.line.index[data-custom=true] {
+    color: red;
+}
