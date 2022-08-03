@@ -176,11 +176,6 @@ class Line {
 
 function init() {
 
-    // Home button
-    document.getElementById('header-text').addEventListener('click', _ => {
-        location.href = '/'
-    })
-
     // Upload files
     document.getElementById('upload').addEventListener('change', _ => {
         const files = document.getElementById('upload').files;

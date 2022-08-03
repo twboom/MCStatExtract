@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+    --darkest: #041C32;
+    --darker: #04293A;
+    --dark: #064663;
+    --light: #ECB365;
+    --lighter: #F7F6E7;
+    --lightest: #ffffff;
+}
+
+html {
+    background-color: var(--darkest);
+    padding: 0;
+    font-family: 'Roboto';
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: var(--dark);
+    color: var(--lightest);
+
+    margin: 0;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 5%;
+    padding-right: 5%;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1.header > a {
+    color: var(--lightest);
+    text-decoration: none;
+}
+
+div.panel {
+    background-color: var(--lightest);
+    width: 50%;
+    margin: 16px auto;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    display: block;
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ffffff00;
+    height: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ababab;
+    border: hidden;
+    border-radius: 10px;
+    max-height: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #777777;
+}
+
+/* Responsive */
+@media screen and (max-width: 1080px) {
+    
+    div.panel {
+        width: 90%;
+    }
+
+}
+
+a#github {
+    font-size: 0;
+    border-radius: 50%;
+}
+
+a#github:focus {
+    outline: solid 2px #ccc;
+}
+
+img#github-link {
+    width: 50px;
+    height: 50px;
+    transition: filter 0.2s, transform 0.2s, width 0.2s, height 0.2s;
+    transform: translateY(-.5px);
+}
+
+img#github-link:hover {
+    filter: invert(0.3);
+}
+
+img#github-link:active, img#github-link:focus {
+    outline: none;
+    transform: translateY(-.5px) scale(0.95);
+}
+
+img#github-link:focus {
+    outline: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    img#github-link {
+        filter: invert(1);
+    }
+
+    img#github-link:hover {
+        filter: invert(0.7);
+    }
+}

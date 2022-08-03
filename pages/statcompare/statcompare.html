@@ -1,0 +1,44 @@
+<script defer src="js/statcompare.js"></script>
+<link rel="stylesheet" href="src/css/table.css">
+
+
+<div class="panel">
+    <h1>Files</h1>
+    <input type="file" name="upload" id="upload" multiple>
+</div>
+<div class="panel">
+    <h1>Search</h1>
+    <input type="search" name="query" id="query">
+    <select name="cat" id="cat">
+        <option value="minecraft:broken">Broken</option>
+        <option value="minecraft:killed">Killed</option>
+        <option value="minecraft:crafted">Crafted</option>
+        <option value="minecraft:used">Used</option>
+        <option value="minecraft:custom">Custom</option>
+        <option value="minecraft:killed_by">Killed by</option>
+        <option value="minecraft:dropped">Dropped</option>
+        <option value="minecraft:mined">Mined</option>
+        <option value="minecraft:picked_up">Picked up</option>
+    </select>
+    <button id="search">Search</button>
+    <details id="autocomplete">
+        <summary>Suggestions</summary>
+        <p>Nothing to show you!</p>
+    </details>
+</div>
+<div class="panel">
+    <h1>Results</h1>
+    <table>
+        <thead>
+            <th>Count</th>
+            <th>Name</th>
+        </thead>
+        <tbody id="results">
+            <p>Nothing to show you!</p>
+        </tbody>
+    </table>
+</div>
+<div class="panel">
+    <h1>Loaded players</h1>
+    <ul id="players"></ul>
+</div>
